@@ -1,0 +1,9 @@
+[submodule "qtwebsocket"]
+	path = qtwebsocket
+	url = git://gitorious.org/qtwebsocket/qtwebsocket.git
+[submodule "qextserialport"]
+	path = qextserialport
+	url = https://code.google.com/p/qextserialport/
+[submodule "qjson"]
+	path = qjson
+	url = git://gitorious.org/qjson/qjson.git
