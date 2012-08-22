@@ -1,9 +1,7 @@
 ###What?
-
 Running this program exposes your serial ports to a websocket.
 
-
-###Uses
+###Credits
   For my own lazyness I'm using
   
   qt-json by Eeli Reilin
@@ -42,7 +40,14 @@ connect
 	acceptable values can be retrieved with the command "supportedConfiguration"
 	
 	example 
-		ws.send('{"type": "connect", "data": {"serial": "ttyUSB0", "baudrate": 115200 } }');
+	---
+	ws.send('{
+		"type": "connect", 
+		"data": {
+			"serial": "ttyUSB0",
+			"baudrate": 115200
+		}
+	}');
 
 disconnect
 	serial(port to stop listening on)
@@ -50,27 +55,39 @@ disconnect
 	stops You from getting messages from specified port, extra parameters are ignored
 	
 	example
-		ws.send('{"type": "disconnect", "data": {"serial": "ttyUSB0"}}');
+	ws.send('{
+		"type": "disconnect", 
+		"data": {
+			"serial": "ttyUSB0"
+		}
+	}');
 
 listSerialPorts
 	no options, will give You a list of serialports with portname and description
 	
 	example
-		ws.send('{"type": "listSerialPorts"}');
+	ws.send('{
+		"type": "listSerialPorts"
+	}');
 
 supportedConfiguration
 	no options, sends You a list with acceptable options for connect
 	example
-		ws.send('{"type": "supportedConfiguration"}');
+	ws.send('{
+		"type": "supportedConfiguration"
+	}');
 
 serial
 	portname, serialport wich will recieve the data sent
 	data, base64 encoded datastring
 
 	example
-		ws.send('{"type": "serial", "data":{
+	ws.send('{
+		"type": "serial", 
+		"data":{
 			"serial": "ttyUSB0",
 			"data": window.atob("this is websocket speaking")
-		}}');
+		}
+	}');
 
 
