@@ -56,12 +56,12 @@ acceptable values can be retrieved with the command "supportedConfiguration"
 *	serial(port to stop listening on)
 stops You from getting messages from specified port
 
-	ws.send('{
+	<ws.send('{
 		"type": "disconnect", 
 		"data": {
 			"serial": "ttyUSB0"
 		}
-	}');
+	}');>
 
 ####listSerialPorts
 no options, will give You a list of serialports with portname and description
