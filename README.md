@@ -20,7 +20,7 @@ To include simple data add {"type": "command", "data": "JSON encoded data"}
 All serialdata to and from the server is encoded with base64,
 all other data sent to and from are plaintext.
 
-Commands
+###Commands
 *	connect
 *	disconnect
 *	listSerialPorts
@@ -28,7 +28,6 @@ Commands
 *	serial
 
 ####connect
-
 *	serial(required, port to connect)
 *	baudrate
 *	databits
@@ -36,7 +35,7 @@ Commands
 *	parity
 *	flowcontrol
 
-if a option is left out it will use default values as follows:
+if a option is left out a default value will be used:
 *	baudrate	: 57600
 *	databits	: 8
 *	stopbits	: 1
