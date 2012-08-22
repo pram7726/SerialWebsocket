@@ -21,30 +21,30 @@ All serialdata to and from the server is encoded with base64,
 all other data sent to and from are plaintext.
 
 Commands
-	*	connect
-	*	disconnect
-	*	listSerialPorts
-	*	supportedConfiguration
-	*	serial
+*	connect
+*	disconnect
+*	listSerialPorts
+*	supportedConfiguration
+*	serial
 
 ####connect
-	*	serial(required, port to connect)
-	*	baudrate
-	*	databits
-	*	stopbits
-	*	parity
-	*	flowcontrol
 
-	if a option is left out it will use default values as follows:
-		*	baudrate	: 57600
-		*	databits	: 8
-		*	stopbits	: 1
-		*	parity		: NONE
-		*	flowcontrol	: OFF
-	
-	acceptable values can be retrieved with the command "supportedConfiguration"
-	
-	
+*	serial(required, port to connect)
+*	baudrate
+*	databits
+*	stopbits
+*	parity
+*	flowcontrol
+
+if a option is left out it will use default values as follows:
+*	baudrate	: 57600
+*	databits	: 8
+*	stopbits	: 1
+*	parity		: NONE
+*	flowcontrol	: OFF
+
+acceptable values can be retrieved with the command "supportedConfiguration"
+
 	ws.send('{
 		"type": "connect", 
 		"data": {
@@ -54,9 +54,8 @@ Commands
 	}');
 
 ####disconnect
-	*	serial(port to stop listening on)
-	stops You from getting messages from specified port
-
+*	serial(port to stop listening on)
+stops You from getting messages from specified port
 
 	ws.send('{
 		"type": "disconnect", 
@@ -66,25 +65,22 @@ Commands
 	}');
 
 ####listSerialPorts
-	no options, will give You a list of serialports with portname and description
-	
+no options, will give You a list of serialports with portname and description
 
 	ws.send('{
 		"type": "listSerialPorts"
 	}');
 
 ####supportedConfiguration
-	no options, sends You a list with acceptable options for connect
-
+no options, sends You a list with acceptable options for connect
 	
 	ws.send('{
 		"type": "supportedConfiguration"
 	}');
 
 ####serial
-	*portname, serialport wich will recieve the data sent
-	*data, base64 encoded datastring
-
+*portname, serialport wich will recieve the data sent
+*data, base64 encoded datastring
 
 	ws.send('{
 		"type": "serial", 
@@ -97,7 +93,7 @@ Commands
 
 The websocket server will respond with theese JSON objects
 	
-	#####serialPorts
+#####serialPorts
 	{
 		"type": "serialPorts",
 		"data": [
@@ -107,7 +103,7 @@ The websocket server will respond with theese JSON objects
 			
 	}
 
-	#####supportedConfiguration
+#####supportedConfiguration
 	{
 		"type": "supportedConfiguration",
 		"data": {
@@ -118,7 +114,7 @@ The websocket server will respond with theese JSON objects
 		}
 	}
 
-	#####serialData
+#####serialData
 	{
 		"type": "serialData",
 		"data" : {
