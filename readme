@@ -16,6 +16,10 @@ Running this program exposes your serial ports to a websocket.
 ###Usage
 Send commands as JSON to the socket {"type": "command"}
 To include simple data add {"type": "command", "data": "JSON encoded data"}
+
+All serialdata to and from the server is encoded with base64,
+all other data sent to and from are plaintext.
+
 Commands
 	connect
 	disconnect
@@ -40,7 +44,6 @@ connect
 	acceptable values can be retrieved with the command "supportedConfiguration"
 	
 	example 
-	---
 	ws.send('{
 		"type": "connect", 
 		"data": {
@@ -52,8 +55,8 @@ connect
 disconnect
 	serial(port to stop listening on)
 
-	stops You from getting messages from specified port, extra parameters are ignored
-	
+	stops You from getting messages from specified port
+
 	example
 	ws.send('{
 		"type": "disconnect", 
@@ -91,3 +94,35 @@ serial
 	}');
 
 
+The websocket server will respond with theese JSON objects
+	
+	serialPorts will come like an array with Objects
+	{
+		"type": "serialPorts",
+		"data": [
+			{ "port": "ttyUSB0", "desc": "USB-serial adapter 0"},
+			{ "port": "rfcomm0", "desc": "Bluetooth-serial adapter 0"}
+		]
+			
+	}
+
+	supportedConfiguration
+	{
+		"type": "supportedConfiguration",
+		"data": {
+			"databits": [5,6,7,8],
+			"flowcontrol": ["HARDWARE", "XONXOFF", "OFF"],
+			"parity": ["ODD", "EVEN", "NONE", "SPACE"],
+			"stopbits": ["1", "2"]
+		}
+	}
+
+	serialData
+	{
+		"type": "serialData",
+		"data" : {
+			"serial": "ttyUSB0",
+			"base"	: base64 encoded serialdata
+
+		}
+	}
