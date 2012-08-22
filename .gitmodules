@@ -4,6 +4,6 @@
 [submodule "qextserialport"]
 	path = qextserialport
 	url = https://code.google.com/p/qextserialport/
-[submodule "qjson"]
-	path = qjson
-	url = git://gitorious.org/qjson/qjson.git
+[submodule "qt-json"]
+	path = qt-json
+	url = git://github.com/ereilin/qt-json.git
