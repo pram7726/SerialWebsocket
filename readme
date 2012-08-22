@@ -1,0 +1,22 @@
+1. What?
+
+Running this program exposes your serial ports to a websocket.
+
+Default port is 8778, if no arguments are given.
+
+
+2. Uses
+
+  For my own lazyness I'm using
+  
+  qt-json by Eeli Reilin
+    https://github.com/ereilin/qt-json
+  
+  QextSerialPort
+    https://code.google.com/p/qextserialport/
+
+  QtWebsocket
+    http://gitorious.org/qtwebsocket
+
+3. Usage
+
