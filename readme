@@ -1,12 +1,9 @@
-1. What?
+What?
 
 Running this program exposes your serial ports to a websocket.
 
-Default port is 8778, if no arguments are given.
 
-
-2. Uses
-
+Uses
   For my own lazyness I'm using
   
   qt-json by Eeli Reilin
@@ -18,5 +15,67 @@ Default port is 8778, if no arguments are given.
   QtWebsocket
     http://gitorious.org/qtwebsocket
 
-3. Usage
+Usage
+	Send commands as JSON to the socket {"type": "command"}
+	To include simple data add {"type": "command", "data": "JSON encoded data"}
+	Commands
+		connect
+		disconnect
+		listSerialPorts
+		supportedConfiguration
+		serial
 
+	connect
+		serial(required, port to connect)
+		baudrate
+		databits
+		stopbits
+		parity
+		flowcontrol
+
+		if a option is left out it will use default values as follows:
+			baudrate	: 57600
+			databits	: 8
+			stopbits	: 1
+			parity		: NONE
+			flowcontrol	: OFF
+		acceptable values can be retrieved with the command "supportedConfiguration"
+		
+		example 
+			ws.send('{"type": "connect", "data": {"serial": "ttyUSB0", "baudrate": 115200 } }');
+
+	disconnect
+		serial(port to stop listening on)
+
+		stops You from getting messages from specified port, extra parameters are ignored
+		
+		example
+			ws.send('{"type": "disconnect", "data": {"serial": "ttyUSB0"}}');
+
+	listSerialPorts
+		no options, will give You a list of serialports with portname and description
+		
+		example
+			ws.send('{"type": "listSerialPorts"}');
+
+	supportedConfiguration
+		no options, sends You a list with acceptable options for connect
+		example
+			ws.send('{"type": "supportedConfiguration"}');
+
+	serial
+		portname, serialport wich will recieve the data sent
+		data, base64 encoded datastring
+
+		example
+			ws.send('{"type": "serial", "data":{
+				"serial": "ttyUSB0",
+				"data": window.atob("this is websocket speaking")
+			}}');
+
+
+Usage
+	1. Start the program (first argument will be used as port, otherwise 8778)
+	2. Connect a websocket
+	3. ?
+	4. Profit
